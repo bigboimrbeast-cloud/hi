@@ -19,7 +19,7 @@ public class playerMovement : MonoBehaviour
     void Update()
     {
         Debug.Log(Input.GetAxis("Horizontal"));
-        rb.linearVelocity = new Vector3(Input.GetAxis("Horizontal") * 10, rb.linearVelocity.y, 0);
+        rb.linearVelocity = new Vector2(Input.GetAxis("Horizontal") * 10, rb.linearVelocity.y);
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
