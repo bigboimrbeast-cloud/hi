@@ -9,6 +9,9 @@ public class playerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    private bool isGrounded;
+    public float radius;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,8 +23,8 @@ public class playerMovement : MonoBehaviour
     {
         Debug.Log(Input.GetAxis("Horizontal"));
         rb.linearVelocity = new Vector2(Input.GetAxis("Horizontal") * 10, rb.linearVelocity.y);
-
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, radius, LayerMask.GetMask("Ground"));
+        if (Input.GetKeyDown(KeyCode.UpArrow)&& isGrounded)
         {
             rb.AddForce(transform.up*300);
         }
